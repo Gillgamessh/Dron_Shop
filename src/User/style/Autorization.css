@@ -1,0 +1,102 @@
+.h1 {
+    border-bottom: 1px solid white;
+    color: #000000;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    padding: 10px;
+    text-align: center;
+  }
+.form {
+  background: -webkit-linear-gradient(-45deg, #225e9e 0%, #712c69 100%);
+  background: linear-gradient(-45deg, #225e9e 0%, #712c69 100%);
+    border: 1px solid #dedede;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 30px 50px;
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-60%, -60%);
+  }
+  .form_new {
+    background: -webkit-linear-gradient(-45deg, #225e9e 0%, #712c69 100%);
+    background: linear-gradient(-45deg, #225e9e 0%, #712c69 100%);
+      border: 1px solid #dedede;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin: 0 auto;
+      max-width: 500px;
+      padding: 30px 50px;
+      position: absolute;
+      bottom: 50%;
+      left: 60%;
+      transform: translate(-60%, 50%);
+    }
+.label {
+    display: block;
+    font-size: larger;
+    color: white;
+    padding: 5px;
+}
+ 
+.input {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    margin: 10px 10px;
+  }
+ 
+.btn {
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  background: -webkit-linear-gradient(-45deg, #225e9e 0%, #712c69 100%);
+   background: linear-gradient(-45deg, #225e9e 0%, #712c69 100%);
+  color: white;
+  text-shadow: 0px 0px 10px rgb(23, 216, 219);
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+
+
+    
+}
+
+.messages {
+    display: flex;
+    justify-content: center;
+}
+ 
+.error {
+    color: red;
+   font-family: sans-serif;
+   font-size: 12px;
+   height: 30px;
+}
+ 
+.success {
+    display: block;
+    background-color: lightblue;
+    color: black;
+    width: fit-content;
+    height: 50px;
+    padding: 5px;
+}
+
+.btn-container {
+    display: flex;
+  }
+  .btn {
+    margin-right: 10px; 
+  }
