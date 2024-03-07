@@ -1,0 +1,129 @@
+﻿--USE master;
+--GO
+
+--IF DB_ID('DronContract') IS NOT NULL
+--BEGIN
+--    DROP DATABASE DronContract;
+--END
+--GO
+
+--CREATE DATABASE DronContract;
+--GO
+
+--USE DronContract;
+--GO
+
+--CREATE TABLE Users (
+--    UserID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+--    first_name VARCHAR(20),
+--    last_name VARCHAR(25),
+--    email VARCHAR(255),
+--    password VARCHAR(40)
+--);
+--GO
+--CREATE TABLE Models (
+--    ModelID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+--    ModelName VARCHAR(255) NOT NULL, 
+--    Description NVARCHAR(MAX) NOT NULL,
+--	Price DECIMAL(10,2) NOT NULL,
+--	Bytes VARBINARY(MAX),  
+--    FileExtension NVARCHAR(MAX),
+--    Size DECIMAL(10,2)
+--);
+--GO
+
+--CREATE TABLE Cameras (
+--    CameraID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+--    CameraName VARCHAR(50),
+--    ModelID INT FOREIGN KEY REFERENCES Models(ModelID), 
+--    Description VARCHAR(255) NOT NULL,
+--    Price DECIMAL(10,2) NOT NULL
+--);
+--GO
+--CREATE TABLE Batteries (
+--    BatteryID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+--    BatteryName VARCHAR(50),
+--    ModelID INT FOREIGN KEY REFERENCES Models(ModelID),
+--    Description VARCHAR(255) NOT NULL,
+--    Price DECIMAL(10,2) NOT NULL
+--);
+--GO
+--CREATE TABLE Drones (      
+--    DroneID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+--    ModelID INT NOT NULL,
+--    CameraID INT NOT NULL,
+--    BatteryID INT NOT NULL,
+--	Counter INT NOT NULL,
+--    FOREIGN KEY (ModelID) REFERENCES Models(ModelID),
+--    FOREIGN KEY (CameraID) REFERENCES Cameras(CameraID),
+--    FOREIGN KEY (BatteryID) REFERENCES Batteries(BatteryID)
+--);
+--GO
+--CREATE TABLE Orders (
+--    OrderID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+--    UserID INT,
+--    DroneID INT NULL,
+--    OrderDate DATE,
+--	TotalPrice DECIMAL(10, 2),
+--    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+--    FOREIGN KEY (DroneID) REFERENCES Drones(DroneID)
+--);
+--GO
+--CREATE TABLE Administrators (
+--    admin_id INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+--    username VARCHAR(50),
+--    password VARCHAR(40)
+--);
+--GO
+--INSERT INTO Users (first_name, last_name, email, password)
+--VALUES 
+--  ('John', 'Doe', 'john.doe@example.com', 'securepassword'),
+--  ('Jane', 'Smith', 'jane.smith@example.com', 'securepassword');
+
+--GO
+--INSERT INTO Models (ModelName, Description,Price)
+--VALUES ('ModelX', 'Drone Model with Standard Features',999.99),
+--	   ('ModelY', 'Another Drone Model',1499.99),
+--	   ('ModelZ', 'Yet Another Drone Model',1999.99);
+
+--GO
+--INSERT INTO Cameras (CameraName, ModelID, Description, Price)
+--VALUES 
+--  ('Standard Camera', 1, 'Standard camera for ModelX', 149.99),
+--  ('Wide-Angle Camera', 1, 'Wide-angle camera for ModelX', 199.99),
+--  ('Night Vision Camera', 1, 'Night vision camera for ModelX', 249.99),
+--  ('Standard Camera', 2, 'Standard camera for ModelY', 149.99),
+--  ('Wide-Angle Camera', 2, 'Wide-angle camera for ModelY', 199.99),
+--  ('Night Vision Camera', 2, 'Night vision camera for ModelY', 249.99),
+--  ('4K Camera', 3, '4K camera for ModelZ', 299.99),
+--  ('360-Degree Camera', 3, '360-degree camera for ModelZ', 349.99),
+--  ('Thermal Imaging Camera', 3, 'Thermal imaging camera for ModelZ', 399.99);
+
+--GO
+--INSERT INTO Batteries (BatteryName, ModelID, Description, Price)
+--VALUES 
+--  ('Basic Battery', 1, 'Basic battery for ModelX', 79.99),
+--  ('Extended Battery', 1, 'Extended battery for ModelX', 119.99),
+--  ('High-Capacity Battery', 1, 'High-capacity battery for ModelX', 149.99),
+--  ('Basic Battery', 2, 'Basic battery for ModelY', 79.99),
+--  ('Extended Battery', 2, 'Extended battery for ModelY', 119.99),
+--  ('High-Capacity Battery', 2, 'High-capacity battery for ModelY', 149.99),
+--  ('Ultra Battery', 3, 'Ultra battery for ModelZ', 199.99),
+--  ('Solar-Powered Battery', 3, 'Solar-powered battery for ModelZ', 249.99),
+--  ('Smart Battery', 3, 'Smart battery for ModelZ', 299.99);
+--GO
+--INSERT INTO Drones (ModelID, CameraID, BatteryID, Counter)
+--VALUES 
+--  (1, 1, 1, 4),
+--  (2, 4, 5, 3),
+--  (3, 7, 8, 2);
+--GO
+--INSERT INTO Orders (UserID, DroneID, OrderDate, TotalPrice)
+--VALUES 
+--  (1, 1, GETDATE(),6000),
+--  (2, 2, GETDATE(),7500),
+--  (2, 3, GETDATE(),6200);
+--GO
+
+
+
